@@ -1,0 +1,1 @@
+export const LOGO_URL = "https://img.freepik.com/free-vector/sticker-template-with-food-delivery-banner-isolated_1308-62732.jpg?w=740&t=st=1705576529~exp=1705577129~hmac=641de4625ac9c82c0e91f608c7c24bf5709aa6e2f4f1848243693d6e672cc1dc";
