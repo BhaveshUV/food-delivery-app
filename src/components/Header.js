@@ -1,4 +1,5 @@
 import { LOGO_URL } from "../utils/constant";
+import { Link } from "react-router-dom";
 
 export let Header = () => {
     return (
@@ -9,10 +10,11 @@ export let Header = () => {
                 />
             </div>
             <ul className='text-white list-none flex gap-4 text-2xl px-4'>
-                <li>Home</li>
-                <li>About</li>
-                <li>Contact</li>
-                <li>Cart</li>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/about">About</Link></li>
+                <li><Link to="/contact">Contact</Link></li>
+                <li className="text-lime-500"><Link to="/grocery">Grocery</Link></li>
+                <li><Link to="/cart">{`🛒`}</Link></li>
             </ul>
         </div>
     );
