@@ -7,6 +7,7 @@ import RestaurantNestedCategory from "./RestaurantNestedCategory";
 
 const Restaurant = () => {
     const [isVeg, setIsVeg] = useState(false);
+    const [showIndex, setShowIndex] = useState(null);
     const { resId } = useParams();
 
     // console.log(resId);
@@ -54,10 +55,10 @@ const Restaurant = () => {
                 <div className="flex flex-col gap-2">
                     {categories?.filter((categ) => (categ?.card?.card?.["@type"] === ("type.googleapis.com/swiggy.presentation.food.v2.ItemCategory") || (categ?.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory")))?.map((categ, index) => {
                         if (categ?.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory") {
-                            return <RestaurantCategory key={categ?.card?.card?.title} categ={categ?.card?.card} isVeg={isVeg} />
+                            return <RestaurantCategory key={categ?.card?.card?.title} categ={categ?.card?.card} isVeg={isVeg} itemsVisibility={showIndex === index} setShowIndex={() => setShowIndex(showIndex === index ? null : index)}/>
                         }
                         else {
-                            return <RestaurantNestedCategory key={categ?.card?.card?.title} categ={categ} isVeg={isVeg} />
+                            return <RestaurantNestedCategory key={categ?.card?.card?.title} categ={categ} isVeg={isVeg} parentsVisibility={showIndex === index} setShowIndex={() => setShowIndex(showIndex === index ? null : index)} />
                         }
                     })}
                 </div>
