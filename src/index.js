@@ -6,6 +6,7 @@ import Body from './components/Body';
 import About from "./components/About";
 import Contact from './components/Contact';
 import Grocery from './components/Grocery';
+import Restaurant from './components/Restaurant';
 import Cart from './components/Cart';
 import Error from './components/Error';
 import reportWebVitals from './reportWebVitals';
@@ -32,6 +33,10 @@ const appRouter = createHashRouter([
       {
         path: "/grocery",
         element: <Grocery />,
+      },
+      {
+        path: "/restaurants/:resId",
+        element: <Restaurant />
       },
       {
         path: "/cart",

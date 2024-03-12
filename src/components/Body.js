@@ -2,6 +2,7 @@ import Card from "./Card";
 import Shimmer from "./Shimmer";
 import { useState, useEffect } from "react";
 import { REST_LIST_API } from "../utils/constant";
+import { Link } from "react-router-dom";
 
 let searchFunc = undefined;
 
@@ -40,7 +41,7 @@ export let Body = () => {
             // html[0].style = "overflow: hidden",
             <div className='flex flex-col gap-8 px-[10vw]'>
                 <div className="w-[100%] h-10 flex gap-2">
-                    <input type="text" className="w-[100%] rounded-lg text-lg placeholder:px-1" placeholder='Search for restaurant, cuisine or a dish' value={searchTxt} onChange={(e) => setSearchTxt(e.target.value)}/>
+                    <input type="text" className="w-[100%] rounded-lg text-lg placeholder:px-1" placeholder='Search for restaurant, cuisine or a dish' value={searchTxt} onChange={(e) => setSearchTxt(e.target.value)} />
                     <button className="rounded-md bg-gray-300 px-2">Search</button>
                 </div>
                 <div id="filter">
@@ -71,7 +72,7 @@ export let Body = () => {
     return (
         <div className='flex flex-col gap-8 px-[10vw]'>
             <div className="w-[100%] h-10 flex gap-2">
-                <input type="text" className="w-[100%] rounded-lg text-lg placeholder:px-1" id="search" placeholder='Search for restaurant, cuisine or a dish' value={searchTxt} onChange={(e) => setSearchTxt(e.target.value)}/>
+                <input type="text" className="w-[100%] rounded-lg text-lg placeholder:px-1" id="search" placeholder='Search for restaurant, cuisine or a dish' value={searchTxt} onChange={(e) => setSearchTxt(e.target.value)} />
                 <button id="searchBtn" className="rounded-md bg-gray-300 px-2" onClick={
                     () => {
                         searchFunc();
@@ -87,7 +88,7 @@ export let Body = () => {
                 }>4+ Rating</button>
             </div>
             <div className='flex flex-wrap justify-center gap-8'>
-                {rests.map((restaurant) => <Card key={restaurant.info.id} restaurant={restaurant} />)}
+                {rests.map((restaurant) => <Link to={`/restaurants/${restaurant.info.id}`} key={restaurant.info.id}><Card restaurant={restaurant} /></Link>)}
             </div>
         </div>
     );
