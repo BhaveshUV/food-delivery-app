@@ -1,7 +1,10 @@
 import { LOGO_URL } from "../utils/constant";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import UserContext from "../utils/UserContext";
 
 export let Header = () => {
+    let { username } = useContext(UserContext);
     return (
         <div className='flex justify-between items-center box-content h-28 px-8 py-2'>
             <div className='h-28 rounded-lg'>
@@ -15,6 +18,7 @@ export let Header = () => {
                 <li><Link to="/contact">Contact</Link></li>
                 <li className="text-lime-500"><Link to="/grocery">Grocery</Link></li>
                 <li><Link to="/cart">{`🛒`}</Link></li>
+                <li>{username}</li>
             </ul>
         </div>
     );

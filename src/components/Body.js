@@ -1,6 +1,7 @@
 import Card from "./Card";
 import Shimmer from "./Shimmer";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import UserContext from "../utils/UserContext";
 import { REST_LIST_API } from "../utils/constant";
 import { Link } from "react-router-dom";
 
@@ -10,6 +11,7 @@ export let Body = () => {
     let [rests, setRests] = useState([]);
     let [searchTxt, setSearchTxt] = useState("");
     let [restsCopy, setRestsCopy] = useState([]);
+    const {username, setUser} = useContext(UserContext);
     // console.log("RestsCopy: ", restsCopy);
     useEffect(() => {
         let action = (event) => {
@@ -86,6 +88,8 @@ export let Body = () => {
                         setRests(filtered);
                     }
                 }>4+ Rating</button>
+                <label htmlFor="dynamic_username" className="text-white">Set the user from here: </label>
+                <input type="text" id="dynamic_username" className="px-2 rounded-lg h-full" value={username} onChange={(e) => setUser(e.target.value)}></input>
             </div>
             <div className='flex flex-wrap justify-center gap-8'>
                 {rests.map((restaurant) => <Link to={`/restaurants/${restaurant.info.id}`} key={restaurant.info.id}><Card restaurant={restaurant} /></Link>)}
