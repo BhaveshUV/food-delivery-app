@@ -5,3 +5,16 @@
 body {
   background-color: rgb(8, 41, 81);
 }
+
+.toggler {
+  transition: right 2s ease-in 0s;
+}
+
+label:has(+ input:checked) .toggler {
+  background-color: green;
+  right: 0;
+}
+
+label:has(+ input:checked) .toggler-container {
+  border: 2px solid green;
+}
