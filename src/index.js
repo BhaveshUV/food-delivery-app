@@ -8,6 +8,7 @@ import Contact from './components/Contact';
 import Grocery from './components/Grocery';
 import Restaurant from './components/Restaurant';
 import Cart from './components/Cart';
+import Login from './components/Login';
 import Error from './components/Error';
 import reportWebVitals from './reportWebVitals';
 import { createHashRouter, RouterProvider } from 'react-router-dom';
@@ -41,6 +42,10 @@ const appRouter = createHashRouter([
       {
         path: "/cart",
         element: <Cart />
+      }, 
+      {
+        path: "/login",
+        element: <Login />
       }
     ],
   },
