@@ -16,4 +16,15 @@ export let Card = (props) => {
     );
 }
 
+export let withVegLabel = (Card) => {
+    return (props) => {
+        return (
+            <div className="relative">
+                <label className="h-fit w-fit px-2 rounded-sm absolute top-2 bg-black text-white shadow-sm shadow-black">Pure Veg</label>
+                <Card {...props} />
+            </div>
+        )
+    }
+}
+
 export default Card;

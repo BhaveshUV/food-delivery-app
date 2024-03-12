@@ -1,4 +1,4 @@
-import Card from "./Card";
+import Card, { withVegLabel } from "./Card";
 import Shimmer from "./Shimmer";
 import { useState, useEffect, useContext } from "react";
 import UserContext from "../utils/UserContext";
@@ -11,7 +11,7 @@ export let Body = () => {
     let [rests, setRests] = useState([]);
     let [searchTxt, setSearchTxt] = useState("");
     let [restsCopy, setRestsCopy] = useState([]);
-    const {username, setUser} = useContext(UserContext);
+    const { username, setUser } = useContext(UserContext);
     // console.log("RestsCopy: ", restsCopy);
     useEffect(() => {
         let action = (event) => {
@@ -71,6 +71,8 @@ export let Body = () => {
         }
     }
 
+    let VegCard = withVegLabel(Card);
+
     return (
         <div className='flex flex-col gap-8 px-[10vw]'>
             <div className="w-[100%] h-10 flex gap-2">
@@ -92,7 +94,9 @@ export let Body = () => {
                 <input type="text" id="dynamic_username" className="px-2 rounded-lg h-full" value={username} onChange={(e) => setUser(e.target.value)}></input>
             </div>
             <div className='flex flex-wrap justify-center gap-8'>
-                {rests.map((restaurant) => <Link to={`/restaurants/${restaurant.info.id}`} key={restaurant.info.id}><Card restaurant={restaurant} /></Link>)}
+                {rests.map((restaurant) => <Link to={`/restaurants/${restaurant.info.id}`} key={restaurant.info.id}>
+                    {restaurant.info.veg ? <VegCard restaurant={restaurant} /> : <Card restaurant={restaurant} />}
+                </Link>)}
             </div>
         </div>
     );
