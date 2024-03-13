@@ -4,6 +4,7 @@ import { useState, useEffect, useContext } from "react";
 import UserContext from "../utils/UserContext";
 import { REST_LIST_API } from "../utils/constant";
 import { Link } from "react-router-dom";
+import MOCK_REST_LIST from "./Mocks/RestListMockData.json";
 
 let searchFunc = undefined;
 
@@ -37,7 +38,9 @@ export let Body = () => {
             setRestsCopy(restList);
             setRests(restList);
         } catch(e) {
-            console.error(e);
+            setRests(MOCK_REST_LIST.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+            setRestsCopy(MOCK_REST_LIST.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+            // console.error(e);
         }
     }
 
