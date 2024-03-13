@@ -1,17 +1,18 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import Body from './components/Body';
-import About from "./components/About";
+import Loading from "./components/Loading";
 import Contact from './components/Contact';
-import Grocery from './components/Grocery';
 import Restaurant from './components/Restaurant';
 import Cart from './components/Cart';
 import Login from './components/Login';
 import Error from './components/Error';
 import reportWebVitals from './reportWebVitals';
 import { createHashRouter, RouterProvider } from 'react-router-dom';
+const About = lazy(() => import('./components/About'));
+const Grocery = lazy(() => import('./components/Grocery'));
 
 const appRouter = createHashRouter([
   {
@@ -25,7 +26,9 @@ const appRouter = createHashRouter([
       },
       {
         path: "/about",
-        element: <About />,
+        element: <Suspense fallback={<Loading />}>
+          <About />
+        </Suspense>,
       },
       {
         path: "/contact",
@@ -33,7 +36,9 @@ const appRouter = createHashRouter([
       },
       {
         path: "/grocery",
-        element: <Grocery />,
+        element: <Suspense fallback={<Loading />}>
+          <Grocery />
+        </Suspense>,
       },
       {
         path: "/restaurants/:resId",
@@ -42,7 +47,7 @@ const appRouter = createHashRouter([
       {
         path: "/cart",
         element: <Cart />
-      }, 
+      },
       {
         path: "/login",
         element: <Login />
