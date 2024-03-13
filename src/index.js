@@ -11,6 +11,9 @@ import Login from './components/Login';
 import Error from './components/Error';
 import reportWebVitals from './reportWebVitals';
 import { createHashRouter, RouterProvider } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import appStore from './utils/appStore/appStore';
+
 const About = lazy(() => import('./components/About'));
 const Grocery = lazy(() => import('./components/Grocery'));
 
@@ -59,7 +62,9 @@ const appRouter = createHashRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={appRouter} />
+    <Provider store={appStore}>
+      <RouterProvider router={appRouter} />
+    </Provider>
   </React.StrictMode>
 );
 
