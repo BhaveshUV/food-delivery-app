@@ -29,12 +29,16 @@ export let Body = () => {
     }, []);
 
     let fetchData = async () => {
-        let data = await fetch(REST_LIST_API);
-        let dataJson = await data.json();
-        let restList = dataJson?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-        // console.log(restList);
-        setRestsCopy(restList);
-        setRests(restList);
+        try {
+            let data = await fetch(REST_LIST_API);
+            let dataJson = await data.json();
+            let restList = dataJson?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+            console.log(restList);
+            setRestsCopy(restList);
+            setRests(restList);
+        } catch(e) {
+            console.error(e);
+        }
     }
 
     if (rests.length === 0) {

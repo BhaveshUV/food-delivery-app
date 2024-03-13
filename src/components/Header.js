@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 import { useState, useContext } from "react";
 import UserContext from "../utils/UserContext";
 import { useSelector } from "react-redux";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 export let Header = () => {
     const [logBtn, setLogBtn] = useState("Login")
     let { username } = useContext(UserContext);
-    let cartItems = useSelector((store) => store.cart.items)
+    let cartItems = useSelector((store) => store.cart.items);
+    let status = useOnlineStatus();
 
     return (
         <div className='flex justify-between items-center box-content h-28 px-8 py-2'>
@@ -15,6 +17,9 @@ export let Header = () => {
                 <img src={LOGO_URL} alt="LOGO"
                     className="basis-28 min-w-28 h-full rounded-lg"
                 />
+            </div>
+            <div style={{ position: "absolute", top: 0, left: "50%", color: "white", transform: "translateX(-50%)" }}>
+                Online Status: {status ? "✅" : "🔴"}
             </div>
             <ul className='text-white list-none flex gap-4 text-2xl px-4'>
                 <li><Link to="/">Home</Link></li>
