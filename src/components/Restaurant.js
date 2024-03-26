@@ -11,22 +11,24 @@ const Restaurant = () => {
     const { resId } = useParams();
 
     // console.log(resId);
+    
+    const obj = useRestInfo(resId);
 
-    const restInfo = useRestInfo(resId);
-
-    if (restInfo == null) {
+    if (obj == null) {
         return (
             <ShimmerRest />
         )
     }
+    const {info, restInfo} = obj;
+    // console.log(restInfo);
 
     // console.log(restInfo);
-    let { name, costForTwoMessage, cuisines, sla, avgRating } = restInfo?.cards[2]?.card?.card?.info;
-    let { cards: categories } = restInfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR;
+    let { name, costForTwoMessage, cuisines, sla, avgRating } = info;
+    let { cards: categories } = restInfo;
     // console.log(categories);
     let checkBox = document.getElementById("vegBtn");
     return (
-        <div className="w-[90vw] md:w-[60vw] m-auto pb-2 text-white flex flex-col gap-8">
+        <div className="w-[90vw] md:w-[60vw] mx-auto pb-2 text-white flex flex-col gap-8">
             <div className="flex justify-between">
                 <div className="restInfo">
                     <h2 className="text-2xl font-bold text-yellow-500">{name}</h2>
@@ -56,7 +58,7 @@ const Restaurant = () => {
                 <div className="flex flex-col gap-2">
                     {categories?.filter((categ) => (categ?.card?.card?.["@type"] === ("type.googleapis.com/swiggy.presentation.food.v2.ItemCategory") || (categ?.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory")))?.map((categ, index) => {
                         if (categ?.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory") {
-                            return <RestaurantCategory key={categ?.card?.card?.title} categ={categ?.card?.card} isVeg={isVeg} itemsVisibility={showIndex === index} setShowIndex={() => setShowIndex(showIndex === index ? null : index)}/>
+                            return <RestaurantCategory key={categ?.card?.card?.title} categ={categ?.card?.card} isVeg={isVeg} itemsVisibility={showIndex === index} setShowIndex={() => setShowIndex(showIndex === index ? null : index)} />
                         }
                         else {
                             return <RestaurantNestedCategory key={categ?.card?.card?.title} categ={categ} isVeg={isVeg} parentsVisibility={showIndex === index} setShowIndex={() => setShowIndex(showIndex === index ? null : index)} />

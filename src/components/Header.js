@@ -11,10 +11,15 @@ export let Header = () => {
     let cartItems = useSelector((store) => store.cart.items);
     let status = useOnlineStatus();
 
-    const handleClick = () => {
+    const openMenu = () => {
         let list = document.getElementsByClassName("hamburgerMenu");
-        list[0].classList.toggle("-right-24");
-        list[0].classList.toggle("right-0");
+        list[0].classList.add("right-0");
+        list[0].classList.remove("-right-24");
+    }
+    const closeMenu = () => {
+        let list = document.getElementsByClassName("hamburgerMenu");
+        list[0].classList.add("-right-24");
+        list[0].classList.remove("right-0");
     }
 
     return (
@@ -29,20 +34,20 @@ export let Header = () => {
             </div>
             <div
                 tabIndex={0}
-                onBlur={handleClick}
+                onBlur={closeMenu}
                 className="box-content h-fit w-5 cursor-pointer p-2 py-3 bg-slate-400 rounded-md fixed right-2 lg:hidden"
-                onClick={() => handleClick()}>
+                onClick={openMenu}>
                 <img src="https://static-00.iconduck.com/assets.00/burger-menu-1-icon-2048x1521-ph48gq5y.png" alt="Hamburger-menu" />
             </div>
             <ul className={`hamburgerMenu transition-right ease-linear duration-100 text-left flex-col bg-black list-none fixed -right-24 top-0 flex z-10 lg:gap-4 lg:text-2xl lg:px-4 lg:static text-white lg:bg-transparent lg:flex-row`}
                 onMouseDown={(e) => e.preventDefault()}>
-                <li className="cursor-pointer bg-red-400 px-1 pb-[0.15rem] w-fit leading-none self-start m-1 lg:hidden" onClick={() => handleClick()}>✖</li>
-                <li className="px-3 lg:px-0 hover:underline lg:hover:no-underline"><Link to="/">Home</Link></li>
-                <li className="px-3 lg:px-0 hover:underline lg:hover:no-underline"><Link to="/about">About</Link></li>
-                <li className="px-3 lg:px-0 hover:underline lg:hover:no-underline"><Link to="/contact">Contact</Link></li>
-                <li className="text-lime-500 hover:underline lg:hover:no-underline px-3 lg:px-0"><Link to="/grocery">Grocery</Link></li>
-                <li className="text-nowrap px-3 hover:underline lg:hover:no-underline lg:px-0"><Link to="/cart">{`🛒` + cartItems.length}</Link></li>
-                <li>{logBtn === "Login" ? <Link to="/login"><button className="hover:underline lg:hover:no-underline lg:bg-yellow-400 rounded-md px-4" onClick={() => setLogBtn("Logout")}>{logBtn}</button></Link> : <Link to="/"><button className="hover:underline lg:hover:no-underline lg:bg-yellow-400 rounded-md px-4" onClick={() => setLogBtn("Login")}>{logBtn}</button></Link>}</li>
+                <li onClick={closeMenu} className="cursor-pointer bg-red-400 px-1 pb-[0.15rem] w-fit leading-none self-start m-1 lg:hidden">✖</li>
+                <li onClick={closeMenu} className="px-3 lg:px-0 hover:underline lg:hover:no-underline"><Link to="/">Home</Link></li>
+                <li onClick={closeMenu} className="px-3 lg:px-0 hover:underline lg:hover:no-underline"><Link to="/about">About</Link></li>
+                <li onClick={closeMenu} className="px-3 lg:px-0 hover:underline lg:hover:no-underline"><Link to="/contact">Contact</Link></li>
+                <li onClick={closeMenu} className="text-lime-500 hover:underline lg:hover:no-underline px-3 lg:px-0"><Link to="/grocery">Grocery</Link></li>
+                <li onClick={closeMenu} className="text-nowrap px-3 hover:underline lg:hover:no-underline lg:px-0"><Link to="/cart">{`🛒` + cartItems.length}</Link></li>
+                <li onClick={closeMenu} >{logBtn === "Login" ? <Link to="/login"><button className="hover:underline lg:hover:no-underline lg:bg-yellow-400 rounded-md px-4" onClick={() => setLogBtn("Logout")}>{logBtn}</button></Link> : <Link to="/"><button className="hover:underline lg:hover:no-underline lg:bg-yellow-400 rounded-md px-4" onClick={() => setLogBtn("Login")}>{logBtn}</button></Link>}</li>
                 <li className="px-3 lg:px-0 border-t-2 border-neutral-500 lg:border-0">{username}</li>
             </ul>
         </div>

@@ -1,6 +1,6 @@
 const Grocery = () => {
     return (
-        <div className="text-white text-center">
+        <div className="text-white text-center px-2">
             <h1 className="text-yellow-500 text-3xl font-bold">
                 Welcome to our grocery store🙌✨
             </h1>

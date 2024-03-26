@@ -38,7 +38,7 @@ const Login = () => {
         },
     });
     return (
-        <div className='form-body w-full md:w-[50vw] mx-auto my-[10vh] px-6 bg-black bg-opacity-45 rounded-md'>
+        <div className='form-body w-full max-w-[480px] md:w-[50vw] mx-auto my-[10vh] px-6 bg-black bg-opacity-45 rounded-md'>
             <h2 className="text-yellow-500 text-center text-2xl font-semibold p-4">Login Page</h2>
             <form className="flex flex-col gap-4" onSubmit={formik.handleSubmit}>
                 <div>
