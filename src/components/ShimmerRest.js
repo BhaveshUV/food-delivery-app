@@ -5,7 +5,7 @@ const ShimmerRest = () => {
     }
 
     return (
-        <div className="w-[60vw] m-auto text-white flex flex-col gap-8">
+        <div className="w-[90vw] md:w-[60vw] m-auto text-white flex flex-col gap-8">
             <div className="rest-container h-28 bg-[#a9a9a9] flex justify-between "></div>
             <div className="menu">
                 <div className="veg-nonVeg-toggle mb-2">

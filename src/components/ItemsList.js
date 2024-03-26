@@ -12,6 +12,13 @@ const ItemsList = ({ items, isCartItem }) => {
         dispatch(removeItem(index));
     }
 
+    const clickAnimation = (e) => {
+        e.target.classList.toggle("scale-90");
+        setTimeout(() => {
+            e.target.classList.toggle("scale-90");
+        }, 50);
+    }
+
     return (
         <div>
             {items.map((dish, index) => {
@@ -30,11 +37,17 @@ const ItemsList = ({ items, isCartItem }) => {
                                 {
                                     isCartItem ?
                                         <button className="bg-white text-red-700 text-sm font-bold px-4 py-2 rounded-lg absolute left-[50%] translate-x-[-50%] bottom-[-0.5rem] w-max shadow-sm shadow-gray-400"
-                                            onClick={() => removeFromCartHandler(index)}>
+                                            onClick={(e) => {
+                                                clickAnimation(e);
+                                                removeFromCartHandler(index);
+                                            }}>
                                             REMOVE -
                                         </button> :
                                         <button className="bg-white text-green-700 text-sm font-bold px-4 py-2 rounded-lg absolute left-[50%] translate-x-[-50%] bottom-[-0.5rem] w-max shadow-sm shadow-gray-400"
-                                            onClick={() => addToCartHandler(dish)}>
+                                            onClick={(e) => {
+                                                clickAnimation(e);
+                                                addToCartHandler(dish);
+                                            }}>
                                             ADD +
                                         </button>
                                 }

@@ -16,7 +16,7 @@ const Cart = () => {
     }
 
     return (
-        <div className="w-[60vw] mx-auto my-2 pb-2 text-white flex flex-col gap-8">
+        <div className="w-[90vw] md:w-[60vw] mx-auto my-2 pb-2 text-white flex flex-col gap-8">
             <div className="flex gap-2 justify-center relative">
                 <span className="text-yellow-500 text-center text-2xl font-bold">Cart</span>
                 <button onClick={(e) => handleClearCart(e)} className="bg-white text-black px-2 rounded-lg absolute right-0 h-full">Clear cart</button>

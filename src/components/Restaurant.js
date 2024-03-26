@@ -20,12 +20,13 @@ const Restaurant = () => {
         )
     }
 
-    let { name, costForTwoMessage, cuisines, sla, avgRating } = restInfo?.cards[0]?.card?.card?.info;
-    let { cards: categories } = restInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR;
+    // console.log(restInfo);
+    let { name, costForTwoMessage, cuisines, sla, avgRating } = restInfo?.cards[2]?.card?.card?.info;
+    let { cards: categories } = restInfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR;
     // console.log(categories);
     let checkBox = document.getElementById("vegBtn");
     return (
-        <div className="w-[60vw] m-auto pb-2 text-white flex flex-col gap-8">
+        <div className="w-[90vw] md:w-[60vw] m-auto pb-2 text-white flex flex-col gap-8">
             <div className="flex justify-between">
                 <div className="restInfo">
                     <h2 className="text-2xl font-bold text-yellow-500">{name}</h2>
