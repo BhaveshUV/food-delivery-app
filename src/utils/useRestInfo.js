@@ -8,12 +8,19 @@ const useRestInfo = (resId) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const info = await fetch(MENU_URL + resId);
-                const json = await info.json();
+                const data = await fetch(MENU_URL + resId);
+                const json = await data.json();
                 console.log(json);
+                let infoCard = json.data.cards.find(card => card.card.card.info);
+                let restInfoCard = json.data.cards.find(card => card.groupedCard);
+                let i = infoCard?.card?.card?.info;
+                let r = restInfoCard?.groupedCard?.cardGroupMap?.REGULAR;
+                if(!i || !r) {
+                    throw new Error("Undefined data");
+                }
                 setRestInfo({
-                    info: json.data.cards[2]?.card?.card?.info,
-                    restInfo: json.data.cards[5]?.groupedCard?.cardGroupMap?.REGULAR
+                    info: i,
+                    restInfo: r,
                 });
             } catch (e) {
                 console.log(MOCK_REST_MENU);

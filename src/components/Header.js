@@ -1,6 +1,6 @@
 import { LOGO_URL } from "../utils/constant";
 import { Link } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import UserContext from "../utils/UserContext";
 import { useSelector } from "react-redux";
 import useOnlineStatus from "../utils/useOnlineStatus";
@@ -21,6 +21,10 @@ export let Header = () => {
         list[0].classList.add("-right-24");
         list[0].classList.remove("right-0");
     }
+
+    useEffect(() => {
+        window.alert("Please install 'Allow CORS' extension to have dynamic experience");
+    }, [])
 
     return (
         <div className='flex justify-between items-center box-content h-fit p-2 lg:px-8 lg:py-4'>
