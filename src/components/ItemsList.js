@@ -23,7 +23,7 @@ const ItemsList = ({ items, isCartItem }) => {
         <div>
             {items.map((dish, index) => {
                 return (
-                    <div data-testid="foodItems" key={dish.card.info.id} className="py-4 border-gray-400 border-b-[1px] h-min">
+                    <div data-testid="foodItems" key={isCartItem ? index : dish.card.info.id} className="py-4 border-gray-400 border-b-[1px] h-min">
                         <div style={{ display: "flex", justifyContent: "space-between", gap: "1rem" }}>
                             <div className="w-9/12">
                                 <div style={{ display: "flex", alignItems: "center" }}>
