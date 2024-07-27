@@ -39,7 +39,7 @@ export let Header = () => {
             <div
                 tabIndex={0}
                 onBlur={closeMenu}
-                className="box-content h-fit w-5 cursor-pointer p-2 py-3 bg-slate-400 rounded-md fixed right-2 lg:hidden"
+                className="box-content h-fit w-5 cursor-pointer p-2 py-3 bg-slate-400 rounded-md fixed z-10 right-2 lg:hidden"
                 onClick={openMenu}>
                 <img src="https://static-00.iconduck.com/assets.00/burger-menu-1-icon-2048x1521-ph48gq5y.png" alt="Hamburger-menu" />
             </div>
@@ -50,7 +50,7 @@ export let Header = () => {
                 <li onClick={closeMenu} className="px-3 lg:px-0 hover:underline lg:hover:no-underline"><Link to="/about">About</Link></li>
                 <li onClick={closeMenu} className="px-3 lg:px-0 hover:underline lg:hover:no-underline"><Link to="/contact">Contact</Link></li>
                 <li onClick={closeMenu} className="text-lime-500 hover:underline lg:hover:no-underline px-3 lg:px-0"><Link to="/grocery">Grocery</Link></li>
-                <li onClick={closeMenu} className="text-nowrap px-3 hover:underline lg:hover:no-underline lg:px-0"><Link to="/cart">{`🛒` + cartItems.length}</Link></li>
+                <li onClick={closeMenu} className="text-nowrap px-3 hover:underline lg:hover:no-underline lg:px-0"><Link to="/cart">{`🛒` + Object.keys(cartItems).length}</Link></li>
                 <li onClick={closeMenu} >{logBtn === "Login" ? <Link to="/login"><button className="hover:underline lg:hover:no-underline lg:bg-yellow-400 rounded-md px-4" onClick={() => setLogBtn("Logout")}>{logBtn}</button></Link> : <Link to="/"><button className="hover:underline lg:hover:no-underline lg:bg-yellow-400 rounded-md px-4" onClick={() => setLogBtn("Login")}>{logBtn}</button></Link>}</li>
                 <li className="px-3 lg:px-0 border-t-2 border-neutral-500 lg:border-0">{username}</li>
             </ul>

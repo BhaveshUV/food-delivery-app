@@ -5,7 +5,9 @@ import { useDispatch } from "react-redux";
 import { clearCart } from "../utils/appStore/cartSlice";
 
 const Cart = () => {
-    let cartItems = useSelector(store => store.cart.items);
+    let cartItemsObj = useSelector(store => store.cart.items);
+    let cartItems = Object.values(cartItemsObj);
+
     let dispatch = useDispatch();
     let handleClearCart = (e) => {
         e.target.style.transform = "scale(0.9)";
@@ -23,7 +25,7 @@ const Cart = () => {
             </div>
             <div className="flex flex-col gap-2 p-4 rounded-lg bg-[#fff2]">
                 {!cartItems.length ? <div className="text-center">Your cart is empty!</ div> :
-                    <ItemsList items={cartItems} isCartItem={true} />
+                    <ItemsList items={cartItems} />
                 }
             </div>
         </div>
