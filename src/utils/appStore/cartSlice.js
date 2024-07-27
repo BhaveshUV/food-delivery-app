@@ -17,7 +17,7 @@ const cartSlice = createSlice({
                     window.alert("Two dishes are having same id, maybe of different restaurants");
                 }
                 state.freq[key]++;
-                console.log(state.freq[key]);
+                // console.log(state.freq[key]);
             } else {
                 state.items[key] = action.payload;
                 state.freq[key] = 1;

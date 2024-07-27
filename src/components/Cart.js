@@ -3,6 +3,7 @@ import ItemsList from "./ItemsList";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { clearCart } from "../utils/appStore/cartSlice";
+import Checkout from "./Checkout";
 
 const Cart = () => {
     let cartItemsObj = useSelector(store => store.cart.items);
@@ -28,6 +29,11 @@ const Cart = () => {
                     <ItemsList items={cartItems} />
                 }
             </div>
+
+            {cartItems.length > 0 ?
+                <Checkout cartItems={cartItems} />
+                : <></>
+            }
         </div>
     );
 };
