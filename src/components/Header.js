@@ -39,9 +39,11 @@ export let Header = () => {
             <div
                 tabIndex={0}
                 onBlur={closeMenu}
-                className="box-content h-fit w-5 cursor-pointer p-2 py-3 bg-slate-400 rounded-md fixed z-10 right-2 lg:hidden"
+                className="box-content h-fit w-6 cursor-pointer p-2 py-2 bg-slate-400 rounded-md fixed z-10 right-2 lg:hidden"
                 onClick={openMenu}>
-                <img src="https://static-00.iconduck.com/assets.00/burger-menu-1-icon-2048x1521-ph48gq5y.png" alt="Hamburger-menu" />
+                <div className="h-1 bg-white my-1 rounded-full"></div>
+                <div className="h-1 bg-white my-1 rounded-full"></div>
+                <div className="h-1 bg-white my-1 rounded-full"></div>
             </div>
             <ul className={`hamburgerMenu transition-right ease-linear duration-100 text-left flex-col bg-black list-none fixed -right-24 top-0 flex z-10 lg:gap-4 lg:text-2xl lg:px-4 lg:static text-white lg:bg-transparent lg:flex-row`}
                 onMouseDown={(e) => e.preventDefault()}>
